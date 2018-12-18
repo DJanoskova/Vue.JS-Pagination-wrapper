@@ -65,7 +65,10 @@ export default {
       this.$emit('input', this.displayedData)
     },
     page () {
-      this.$emit('curentChange', this.page)
+      this.$emit('currentChange', this.page)
+    },
+    currentPage () {
+      this.page = this.currentPage
     }
   },
   components: {
