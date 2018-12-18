@@ -1,5 +1,6 @@
 <template>
   <ElPagination
+    ref="pagination"
     :layout="layout"
     :page-size="pageSize"
     :total="source.length"
@@ -51,6 +52,9 @@ export default {
     },
     reset () {
       this.page = 1
+    },
+    setElementPage () {
+      this.$refs.pagination.internalCurrentPage = this.page
     }
   },
   computed: {
@@ -69,10 +73,14 @@ export default {
     },
     currentPage () {
       this.page = this.currentPage
+      this.setElementPage()
     }
   },
   components: {
     [Pagination.name]: Pagination
+  },
+  mounted () {
+    this.setElementPage()
   }
 }
 </script>
